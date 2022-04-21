@@ -31,6 +31,7 @@ function Login() {
         console.log(resp)
         
         if(resp.data.login){
+            localStorage.setItem('Teacher',JSON.stringify(resp))
             navigate('/teacherProfile')
         }
       else if(resp.data.invalid_password){
@@ -61,8 +62,8 @@ function Login() {
                     <Grid><center>
 
                         <h2> Sign In</h2>
-                        <p>{mailError}</p>
-                        <p>{passwordError}</p>
+                        <p style={{color:'red'}}>   {mailError}</p>
+                        <p style={{color:'red'}}>   {passwordError}</p>
                     </center>
                     </Grid>
                        

@@ -17,6 +17,9 @@ import { Grid } from '@mui/material';
 const pages = ['Tuition', 'languages', 'other classes','psc courses','exam coaching'];
 //const settings = ['Register','Login','Profile', 'Account', 'Dashboard', 'Logout'];
 
+const user=localStorage.getItem('Teacher')
+console.log(user,"===================")
+
 const ResponsiveAppBar = () => {
   const userData = localStorage.getItem("userInfo")
   console.log(userData)
@@ -143,11 +146,10 @@ const ResponsiveAppBar = () => {
                   <Button sx={{ color:'black'}} >Register</Button>
                   </Link>
                   <br/>
-                  <Link style={{textDecoration:'none'}} to='/Login' >
-                  <Button sx={{ color:'black'}} >Login</Button><br/>
-                  </Link>
-                
-                  <Button sx={{ color:'black'}} onClick={logOut}>Log out</Button><br/>
+                  {user?  <Button sx={{ color:'black'}} onClick={logOut}>Log out</Button>:<Link style={{textDecoration:'none'}} to='/Login' >
+                    
+                    <Button sx={{ color:'black'}} >Login</Button><br/>
+                    </Link>}
                   
                   </Box>
 
