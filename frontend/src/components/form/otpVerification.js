@@ -2,6 +2,7 @@ import { Typography, Grid, TextField, Button, Paper } from "@mui/material"
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const styles = {
     paperContainer: {
@@ -13,31 +14,36 @@ const styles = {
 };
 
 
-function OtpVerification() {
+ function OtpVerification() {
+
+    const student_details= useSelector((state)=>{return state.studentDetails})
+    const trainingType= useSelector((state)=>{return state.trainingType})
+    const  courseType= useSelector((state)=>{return state. courseType})
+    const  classType= useSelector((state)=>{return state. classType})
+    const  location= useSelector((state)=>{return state. location})
+    const   subject= useSelector((state)=>{return state.subject})
+
+// console.log(trainingType,"training type")
+// console.log(courseType,"courseType")
+// console.log(courseType,"classType")
+// console.log(location,"location")
+// console.log( subject," subject")
+
     const navigate = useNavigate()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = async (data) => {
-        const url = '/api/otpConform'
-        const teacher = window.localStorage.getItem('teacherInfo')
-        let teacherData = JSON.parse(teacher)
+    const onSubmit = async (otp) => {
+        
+        if(student_details){
+         console.log("have status")
+        const url = '/api/otpConform/student/student'
+
+          let resp = await axios.post(url, {student_details,trainingType,courseType,classType,location,subject,otp})
+          console.log(resp,"from backend")
+           
+     }
     
-    
-        let resp = await axios.post(url, { data, teacherData })
-      console.log(resp)
-        localStorage.removeItem('teacherInfo');
       
-         if(resp.data.alredy_exist){
-            console.log("Teacher already exist")
-            navigate('/login')
-        }
-        else if(resp.data.invalid_otp){
-                console.log("invalid otp")
-        }
-    
-   else {
-        localStorage.setItem("Teacher", JSON.stringify(resp))
-        navigate("/teacherProfile")
-        }
+     
     }
     const avatarStyle = { backgroundColor: 'green' }
     const btnStyle = { margin: '25px 0' }

@@ -16,46 +16,50 @@ const styles = {
     }
 };
 
-function Location(){
-    const navigate =useNavigate()
+function Location() {
+
+    const navigate = useNavigate()
     const dispatch = useDispatch()
-    const location = useSelector((state)=>{return state.location})
+    const location = useSelector((state) => { return state.location })
+    console.log("from redux",location)
+    // const {loading, payload,err} =location
 
-    const {loading, payload,err} =location
 
-
-    console.log(location,"useSelectoruseSelectoruseSelectoruseSelectoruseSelectoruseSelector");
+    //console.log(location,"useSelectoruseSelectoruseSelectoruseSelectoruseSelectoruseSelector");
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const paperStyle = { padding: 20, height: '30vh', width: 360, margin: ' auto' }
-    const onSubmit = (data) => {
-        console.log(data['exampleRequired']);
+
+    const Submit = (data) => {
+        
+        console.log(data)
         dispatch(setLocation(data['exampleRequired']))
+        navigate('/attendClass')
     }
-    return(
+    return (
         <div style={styles.paperContainer} >
-        <Grid container spacing={2} >
+            <Grid container  >
 
-            <Paper elevation={10} style={paperStyle}>
+                <Paper elevation={10} style={paperStyle}>
 
-                <Grid item xs={12} spacing={'2'} align="center">
-                    <Typography style={{ backgroundColor: '54D69E' }}>What is your location?</Typography>
-                </Grid>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <Grid item xs={12} spacing={2} align="center" >
-                        <TextField label="eg:Kannur" {...register("exampleRequired", { required: true })} ></TextField><br />
-                        {errors.exampleRequired && <span>This field is required</span>}
+                    <Grid item xs={12} spacing={'2'} align="center">
+                        <Typography style={{ backgroundColor: '54D69E' }}>What is your location?</Typography>
                     </Grid>
+                    <form onSubmit={handleSubmit(Submit)}>
+                        <Grid item xs={12} spacing={2} align="center" >
+                            <TextField label="eg:Kannur" {...register("exampleRequired", { required: true })} ></TextField><br />
+                            {errors.exampleRequired && <span>This field is required</span>}
+                        </Grid>
 
-                    <Grid sx={{ marginTop: "10px" }} item xs={12} align="center">
-                        <Button type='submit' variant="contained" >Next</Button>
-                    </Grid>
-                </form>
-            </Paper >
+                        <Grid sx={{ marginTop: "10px" }} item xs={12} align="center">
+                            <Button type='submit' variant="contained" >Next</Button>
+                        </Grid>
+                    </form>
+                </Paper >
 
 
-        </Grid >
+            </Grid >
 
-    </div >
+        </div >
     )
 }
 export default Location

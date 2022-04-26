@@ -27,7 +27,9 @@ try {
 
 
 app.use('/api/otpConform',otpConform)
+app.use('/api/otpConform/student',otpConform)
 app.use('/api/Otpverification', otpverification)
+app.use('/api/otpVerification/student',otpverification)
 app.use('/api/student', student)
 app.use('/api/teacher', teacher)
 app.use('/api/login', login)

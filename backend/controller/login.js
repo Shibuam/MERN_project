@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import bcrypt from 'bcrypt'
 
-import teacherModel from '../Model/teacher_model.js'
+import teacherModel from '../Model/teacherModel.js'
 
 const loginHandler = asyncHandler(async (req, res, next) => {
 

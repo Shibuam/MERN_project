@@ -2,10 +2,11 @@ import { Grid,Paper, Typography, TextField, FormControl, InputLabel, Select, Men
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { height, margin, padding } from "@mui/system"
+import { useDispatch,useSelector} from "react-redux"
 
-
+import {studentDetails} from '../../Redux/Actions/HandleSubjectsConstantAction'
 
 const styles = {
     paperContainer: {
@@ -17,34 +18,27 @@ const styles = {
         padding: "3rem",
     }
 };
-function StudentSignUpForm() {
+function StudentSignUpForm () {
+   
+    const dispatch=useDispatch()
     const navigate = useNavigate()
     const paperStyle = { padding: 20,  width: 450, margin: ' auto' }
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [change, setChange] = useState({})
-
-    const [teacher, setTeacher] = useState({
-        name: "",
-        email: "",
-        contactNumber: null,
-        subject: "",
-        pincode: null,
-
-        password: null,
-        teacher: true
-    })
-
-    const submitForm = async () => {
 
 
-        const url = '/api/Otpverification'
-        const { data } = await axios.post(url, teacher)
+    const onSubmit=async  (data) => {
+console.log(data.contactNumber,"contact Number")
+dispatch(studentDetails(data))
+ 
+const url = '/api/otpVerification/student'
+      
+ let contactNumber= data.contactNumber  
     
-        localStorage.setItem('teacherInfo', JSON.stringify(teacher))
+let resp = await axios.post(url, {contactNumber})
 
 
-        navigate('/otpverification')
+navigate('/otpverification')
 
 
     }
@@ -57,65 +51,50 @@ function StudentSignUpForm() {
                 <Typography align="center" mt={3}>You are almost done</Typography>
 
                 <CardContent >
-                    <form onSubmit={handleSubmit(submitForm)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                         <Box  sx={{ borderRadius: 2, bgcolor: 'background.paper' }}>
                      <Paper  > 
                             <Grid container spacing={2}>
 
 
                                 <Grid xs={12} lg={6} item align="center" spacing={1} >
-                                    <TextField fullwidth variant="outlined" label="Enter your full name" {...register('name', { required: "name is required" })}
-                                        value={teacher.name} onChange={(event) => {
-                                            setTeacher({ ...teacher, name: event.target.value })
-                                        }}
+                                    <TextField  onChange={(e)=>{}} fullwidth variant="outlined" label="Enter your full name" {...register("name", { required: "name is required" })}
+                                      
+                            
                                     />
                                     <br />
 
                                  <p style={{color:'red'}}>  {errors?.name && errors.name.message}</p>
                                 </Grid>
                                 <Grid xs={12} lg={6} item align="center" spacing={1}>
-                                    <TextField label="Enter your email"  {...register('email', { required: "email is required" })} value={teacher.email} onChange={(event) => {
-                                        setTeacher({ ...teacher, email: event.target.value })
-                                    }} /><br />
+                                    <TextField label="Enter your email"  {...register('email', { required: "email is required" })}
+                             
+                            
+                                     />
+                                    <br />
                                 <p style={{color:'red'}}>      {errors?.email && errors.email.message}</p>
                                 </Grid>
                                 <Grid xs={12} lg={6} item align="center" spacing={1} >
-                                    <TextField label="Enter your contact number" {...register('contactNumber', { required: "Contact Number is required" })} value={teacher.contactNumber} onChange={(event) => {
-                                        setTeacher({ ...teacher, contactNumber: event.target.value })
-                                    }} /><br />
+                                    <TextField label="Enter your contact number" {...register('contactNumber', { required: "Contact Number is required" })} 
+                               
+                         
+                                     /><br />
                               <p style={{color:'red'}}>        {errors?.contactNumber && errors.contactNumber.message}</p>
                                 </Grid>
                             
 
-                                {/* <Grid item xs={12} lg={6} align="center"  >
-                                    <FormControl fullWidth >
-                                        <InputLabel id="demo-simple-select-label" >Gender</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                              value={'gender'}
-                                            label="Gender"
-                                        //  onChange={handleChange}
-                                        >
-                                            <MenuItem value={'Male'}>MALE</MenuItem>
-                                            <MenuItem value={'Female'}>FEMALE</MenuItem>
-
-                                        </Select>
-                                    </FormControl><br></br>
-                                </Grid> */}
+                             
 
 
                                 <Grid item xs={12} lg={6} align="center" spacing={1} >
                                     <TextField label="Enter your password" {...register('password', { required: "Password is required" })}
-                                        value={teacher.password} onChange={(event) => {
-                                            setTeacher({ ...teacher, password: event.target.value })
-
-                                        }}
+                                
+                                  
                                     /><br />
                                    <p style={{color:'red'}}>   {errors?.password && errors.password.message} </p>
                                 </Grid>
                                 <Grid item xs={12} align="center" spacing={1} >
-                                    <Button type="submit" variant="contained" >Submit</Button>
+                                    <Button type="submit"  variant="contained" >Submit</Button>
                                 </Grid>
                             </Grid>
                             </Paper> 

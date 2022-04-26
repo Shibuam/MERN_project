@@ -11,7 +11,7 @@ import {useNavigate } from 'react-router-dom'
 
 const styles = {
   paperContainer: {
-    height: 1000,
+    height: 550,
     backgroundImage: `url(${"/1-headsets-for-elementary_1.webp"})`,
     backgroundSize: 'cover'
   }

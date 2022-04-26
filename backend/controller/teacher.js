@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import teacherModel from '../Model/teacher_model.js'
+import teacherModel from '../Model/teacherModel.js'
 import bcrypt from 'bcrypt'
 import generateToken from '../util/generateToken.js' // import jwt from 'jsonwebtoken'
 // import twilio from 'twilio'
