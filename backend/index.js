@@ -8,7 +8,7 @@ import teacher from './routes/teacherRoute.js'
 import login from './routes/common.js'
 import path from 'path'
 
-let portnumber = 4500
+let portnumber = process.env.PORT
 //create a new express application
 let app = express()
 app.use(cors())
