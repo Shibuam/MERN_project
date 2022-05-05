@@ -9,15 +9,15 @@ const otpsendTeacher = ((req, res) => {
 
 
 
-    // const client = twilio(accountSid, authToken, {
-    //     lazyLoading: true
-    // });
+    const client = twilio(accountSid, authToken, {
+        lazyLoading: true
+    });
 
-    // let number = req.body.contactNumber
-    // client.verify.services(ServiceID).verifications.create({
-    //     to: `+91${number}`,
-    //     channel: "sms"
-    // })
+    let number = req.body.contactNumber
+    client.verify.services(ServiceID).verifications.create({
+        to: `+91${number}`,
+        channel: "sms"
+    })
 
 
 
@@ -31,25 +31,25 @@ const otpsendTeacher = ((req, res) => {
 const otpSentStudent = ((req, res) => {
 
     let number=req.body.contactNumber
-    console.log(number)
+   
 
 
 
 
-//    const client = twilio(accountSid, authToken, {
-//           lazyLoading: true
-//       });
+    const client = twilio(accountSid, authToken, {
+           lazyLoading: true
+       });
 
    
-//       client.verify.services(ServiceID).verifications.create({
-//           to: `+91${number}`,
-//           channel: "sms"
-//       })
+       client.verify.services(ServiceID).verifications.create({
+           to: `+91${number}`,
+           channel: "sms"
+       })
+
+//console.log(client)
 
 
-
-
-    console.log(contactNumber, "reached")
+    console.log(number, "reached at student verification")
      res.json({
          contactNumber: number
      })

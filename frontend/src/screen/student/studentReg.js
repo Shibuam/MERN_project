@@ -31,7 +31,7 @@ function StudentSignUpForm () {
 console.log(data.contactNumber,"contact Number")
 dispatch(studentDetails(data))
  
-const url = '/api/otpVerification/student'
+const url = '/api/student/otpVerification'
       
  let contactNumber= data.contactNumber  
     

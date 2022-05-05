@@ -3,11 +3,10 @@ import createError from 'http-errors'
 import mongoConnect from './config/connect.js'
 import cors from 'cors'
 
-import student from './routes/student.js'
-import teacher from './routes/teacher.js'
-import login from './routes/login.js'
-import otpverification from './routes/otpverification.js'
-import otpConform from './routes/OtpConform.js'
+import student from './routes/studentRoute.js'
+import teacher from './routes/teacherRoute.js'
+import login from './routes/common.js'
+
 let portnumber = 4500
 //create a new express application
 let app = Express()
@@ -17,22 +16,34 @@ app.use(Express.json())
 
 
 //mongoose connection
-try {
-  mongoConnect()
-} catch (err) {
-  console.log("errror is", err);
-}
+mongoConnect()
 
 
+app.use('/api', login)
 
-
-app.use('/api/otpConform',otpConform)
-app.use('/api/otpConform/student',otpConform)
-app.use('/api/Otpverification', otpverification)
-app.use('/api/otpVerification/student',otpverification)
 app.use('/api/student', student)
 app.use('/api/teacher', teacher)
-app.use('/api/login', login)
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(dirname, '/frontend/build')));
+
+  app.get('*', (req, res, next) =>
+    res.sendFile(
+      'index.html',
+      { root: path.join(dirname, '/frontend/build') },
+      (err) => {
+        if (err) {
+          console.log(err);
+          next(err);
+        }
+      }
+    )
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....');
+  });
+}
 
 app.use(function (req, res, next) {
   next(createError(404));

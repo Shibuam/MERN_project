@@ -1,13 +1,12 @@
+import {useNavigate } from 'react-router-dom'
+
 import { Container, Grid, Typography, Paper } from "@mui/material"
 import Button from '@mui/material/Button'
-
-
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Box, maxWidth } from "@mui/system";
-import {useNavigate } from 'react-router-dom'
 
 const styles = {
   paperContainer: {
@@ -20,10 +19,11 @@ function Register() {
   const navigate = useNavigate()
   return (
     <div style={styles.paperContainer}>
+      
       <Typography variant="h3" style={{display:'flex',justifyContent:'center'}}>What are you looking for?</Typography>
       <Grid container style={{display:'flex',justifyContent:'space-evenly'}}>
       
-        <Grid item xs={12} lg={3}>
+        <Grid item xs={12} md={3} lg={3}>
           <Paper>
          
           <Card >
@@ -48,7 +48,7 @@ function Register() {
           </Paper>
         </Grid>
        
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} md={3} lg={3}>
             <Paper>
      
             <Card>

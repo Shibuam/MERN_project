@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-import { Grid, Paper, FormControl, Button, Radio, FormControlLabel, FormLabel, RadioGroup } from "@mui/material";
+import { Grid, Paper, FormControl, Button, Radio, FormControlLabel, FormLabel, RadioGroup, Typography } from "@mui/material";
 import { setCourseType } from '../../Redux/Actions/HandleSubjectsConstantAction'
 
 const styles = {
@@ -57,8 +57,10 @@ function Course() {
                             <FormControlLabel value="Drawing" control={<Radio />} label="Drawing class" />
                             <FormControlLabel value="Guitar" control={<Radio />} label="Guitar class" />
                         </RadioGroup>
-                        <Button type='submit' onClick={Submit} variant="contained" >Next</Button>
-                    </FormControl>
+                      <Grid item align='center'>
+                        <Button type='submit'  onClick={Submit} variant="contained"  >Next</Button>
+                        </Grid>
+                   </FormControl>
                 </Paper >
 
 

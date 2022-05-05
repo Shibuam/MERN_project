@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link , useNavigate } from 'react-router-dom';
-import { Grid } from '@mui/material';
+
 
 const pages = ['Tuition', 'languages', 'other classes','psc courses','exam coaching'];
 //const settings = ['Register','Login','Profile', 'Account', 'Dashboard', 'Logout'];
@@ -20,7 +20,7 @@ const pages = ['Tuition', 'languages', 'other classes','psc courses','exam coach
 const user=localStorage.getItem('Teacher')
 console.log(user,"===================")
 
-const ResponsiveAppBar = () => {
+const Header = () => {
   const userData = localStorage.getItem("userInfo")
   console.log(userData)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -162,4 +162,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default Header;

@@ -1,24 +1,30 @@
-import ResponsiveAppBar from "./components/header/ResponsiveAppBar";
+import Header from "./components/header";
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 
-import Register from './components/register/Register'
-import Home from "./components/homePage";
-import TutorRegister from './components/teacher/TutorSignUpForm'
-import Login from './components/form/login'
-import OtpVerification from "./components/form/otpVerification";
-import TeacherProfile from "./components/teacher/TeacherProfile";
-import Footer from "./components/footer/footer";
-import StudentSubject from "./components/student/studentSubject";
-import Location from "./components/student/location";
-import Attend from './components/student/AttendClass'
-import Course from "./components/student/course";
-import StartTraining from "./components/student/StartTraining";
-import StudentReg from './components/student/studentReg'
+import Register from './screen/Register'
+import Home from "./screen/homePage";
+import TutorRegister from './screen/teacher/TutorSignUpForm'
+import Login from './screen/login'
+import OtpVerification from "./components/otpVerification";
+import TeacherProfile from "./screen/teacher/TeacherProfile";
+import Footer from "./components/footer";
+import StudentSubject from "./screen/student/studentSubject";
+import Location from "./screen/student/location";
+import Attend from './screen/student/AttendClass'
+import Course from "./screen/student/course";
+import StartTraining from "./screen/student/StartTraining";
+import StudentReg from './screen/student/studentReg'
+import StudentProfile from './screen/student/studentProfile'
+import ClassType from "./screen/teacher/classTypeAndFees";
+import TeacherCourse from './screen/teacher/courseTeacher'
+import OnetimeFee from './screen/teacher/oneTimeFee'
+import Experience from "./screen/teacher/experience";
+import ProfilePicture from './screen/teacher/ProfilePicture'
 
 function App() {
   return (
      <Router>
-    <ResponsiveAppBar/>
+    <Header/>
        <Routes>
           <Route path='/' element={<Home/>} exact/>
          <Route path="/register" element={<Register/>}/>
@@ -32,6 +38,12 @@ function App() {
          <Route path="/course" element={<Course/>}/>
          <Route path="/startTraining" element={<StartTraining/>}/>
          <Route path='/studentReg' element={<StudentReg/>}/>
+         <Route path='/studentProfile' element={<StudentProfile/>}/>
+         <Route path ='/classType' element={<ClassType/>}/>
+         <Route path="/teacherCourse" element={<TeacherCourse/>}/>
+         <Route path='/onetimeFee' element={<OnetimeFee/>}/>
+         <Route path='/experience' element={<Experience/>}/>
+         <Route path='/profilePicture' element={<ProfilePicture/>}/>
        </Routes>
        <Footer/>
      </Router>

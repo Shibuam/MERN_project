@@ -38,7 +38,7 @@ function TutorSignUpForm() {
     const submitForm = async () => {
 
 
-        const url = '/api/Otpverification'
+        const url = '/api/teacher/OtpverificationTeacher'
         const { data } = await axios.post(url, teacher)
     
         localStorage.setItem('teacherInfo', JSON.stringify(teacher))
@@ -63,7 +63,7 @@ function TutorSignUpForm() {
                             <Grid container spacing={2}>
 
 
-                                <Grid xs={12} lg={6} item align="center" spacing={1} >
+                                <Grid xs={12}  md={6} lg={6} item align="center" spacing={1} >
                                     <TextField fullwidth variant="outlined" label="Enter your full name" {...register('name', { required: "name is required" })}
                                         value={teacher.name} onChange={(event) => {
                                             setTeacher({ ...teacher, name: event.target.value })
@@ -73,19 +73,19 @@ function TutorSignUpForm() {
 
                                  <p style={{color:'red'}}>  {errors?.name && errors.name.message}</p>
                                 </Grid>
-                                <Grid xs={12} lg={6} item align="center" spacing={1}>
+                                <Grid xs={12} md={6} lg={6} item align="center" spacing={1}>
                                     <TextField label="Enter your email"  {...register('email', { required: "email is required" })} value={teacher.email} onChange={(event) => {
                                         setTeacher({ ...teacher, email: event.target.value })
                                     }} /><br />
                                 <p style={{color:'red'}}>      {errors?.email && errors.email.message}</p>
                                 </Grid>
-                                <Grid xs={12} lg={6} item align="center" spacing={1} >
+                                <Grid md={6} xs={12} lg={6} item align="center" spacing={1} >
                                     <TextField label="Enter your contact number" {...register('contactNumber', { required: "Contact Number is required" })} value={teacher.contactNumber} onChange={(event) => {
                                         setTeacher({ ...teacher, contactNumber: event.target.value })
                                     }} /><br />
                               <p style={{color:'red'}}>        {errors?.contactNumber && errors.contactNumber.message}</p>
                                 </Grid>
-                                <Grid item xs={12} lg={6} align="center" spacing={1} >
+                                <Grid item xs={12} md={6} lg={6} align="center" spacing={1} >
                                     <TextField label="Enter your main subject" {...register('subject', { required: "Subject is required" })}
                                         value={teacher.subject} onChange={(event) => {
                                             setTeacher({ ...teacher, subject: event.target.value })
@@ -94,7 +94,7 @@ function TutorSignUpForm() {
                                     <br />
                                     <p style={{color:'red'}}>    {errors?.subject && errors.subject.message}</p>
                                 </Grid>
-                                <Grid item xs={12} lg={6} align="center"  >
+                                <Grid md={6} item xs={12} lg={6} align="center"  >
                                     <TextField label="pincode" {...register('pincode', { required: "Pin code is required" })}
                                         value={teacher.pincode} onChange={(event) => {
                                             setTeacher({ ...teacher, pincode: event.target.value })
@@ -104,25 +104,10 @@ function TutorSignUpForm() {
 <p style={{color:'red'}}>          {errors?.pincode && errors.pincode.message} </p>
                                 </Grid>
 
-                                {/* <Grid item xs={12} lg={6} align="center"  >
-                                    <FormControl fullWidth >
-                                        <InputLabel id="demo-simple-select-label" >Gender</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                              value={'gender'}
-                                            label="Gender"
-                                        //  onChange={handleChange}
-                                        >
-                                            <MenuItem value={'Male'}>MALE</MenuItem>
-                                            <MenuItem value={'Female'}>FEMALE</MenuItem>
-
-                                        </Select>
-                                    </FormControl><br></br>
-                                </Grid> */}
+                              
 
 
-                                <Grid item xs={12} lg={6} align="center" spacing={1} >
+                                <Grid item xs={12} md={6} lg={6} align="center" spacing={1} >
                                     <TextField label="Enter your password" {...register('password', { required: "Password is required" })}
                                         value={teacher.password} onChange={(event) => {
                                             setTeacher({ ...teacher, password: event.target.value })
