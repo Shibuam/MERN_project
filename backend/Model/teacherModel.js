@@ -24,6 +24,14 @@ const teacherSchema =mongoose.Schema({
     password:{
         required:true,
         type:String
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    video:{
+        type:String,
+        required:false
     }
 })
 const teacher=mongoose.model('teacher',teacherSchema)

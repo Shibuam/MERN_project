@@ -11,21 +11,21 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Link , useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
-const pages = ['Tuition', 'languages', 'other classes','psc courses','exam coaching'];
+const pages = ['Tuition', 'languages', 'other classes', 'psc courses', 'exam coaching'];
 //const settings = ['Register','Login','Profile', 'Account', 'Dashboard', 'Logout'];
 
-const user=localStorage.getItem('Teacher')
-console.log(user,"===================")
+
+
 
 const Header = () => {
-  const userData = localStorage.getItem("userInfo")
-  console.log(userData)
+  let user = localStorage.getItem("user")
+  user=JSON.parse(user)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const navigate  = useNavigate()
+  const navigate = useNavigate()
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -34,18 +34,18 @@ const Header = () => {
   };
 
   const handleCloseNavMenu = () => {
-      
+
     setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
-    
-    setAnchorElUser(null);
+
+   // setAnchorElUser(null);
   };
   const logOut = () => {
     localStorage.clear("userInfo");
     navigate("/");
-  // console.log("reached")
+    // console.log("reached")
   };
 
   return (
@@ -70,7 +70,7 @@ const Header = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-               <MenuIcon /> 
+              <MenuIcon />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -93,7 +93,7 @@ const Header = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
-                  <Typography textAlign="center">{page}</Typography>
+                  {/* <Typography textAlign="center">{page}</Typography> */}
                 </MenuItem>
               ))}
             </Menu>
@@ -121,7 +121,19 @@ const Header = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+               
+             <p style={{color:'white'}}> 
+               {user?
+             
+               user.name
+            
+               :
+                 <>
+                 <Button sx={{ color: 'black' }} onClick={() => navigate('/login')}>Login</Button>
+                 <Button sx={{ color: 'black' }} onClick={() => navigate('/register')}>Register</Button>
+               </>
+               }
+               </p>
               </IconButton>
             </Tooltip>
             <Menu
@@ -140,21 +152,19 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                <MenuItem  onClick={handleCloseUserMenu}>
-                  <Box>
-       <Link style={{textDecoration:'none'}} to='/register' >
-                  <Button sx={{ color:'black'}} >Register</Button>
-                  </Link>
-                  <br/>
-                  {user?  <Button sx={{ color:'black'}} onClick={logOut}>Log out</Button>:<Link style={{textDecoration:'none'}} to='/Login' >
-                    
-                    <Button sx={{ color:'black'}} >Login</Button><br/>
-                    </Link>}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Box>
+                  <br />
+                  {user ? <Button sx={{ color: 'black' }} onClick={logOut}>Log out</Button>
+                        :null
                   
-                  </Box>
 
-                  
-                </MenuItem>
+                  }
+
+                </Box>
+
+
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

@@ -1,4 +1,4 @@
-import { SET_SUBJECT, SET_LOCATION_SUCCESS,SET_ATTEND_CLASS_SUCCESS,SET_COURSE_TYPE_SUCCESS,SET_TRAINING_TYPE_SUCCESS,SET_STUDENT_DETAILS_SUCCESS } from "../Constants/SubjectActions"
+import { SET_SUBJECT, SET_LOCATION_SUCCESS,SET_ATTEND_CLASS_SUCCESS,SET_COURSE_TYPE_SUCCESS,SET_TRAINING_TYPE_SUCCESS,SET_STUDENT_DETAILS_SUCCESS,SET_CLASS_TYPE_SUCCESS,SET_COURSES_TYPE_SUCCESS,SET_TOKEN_TYPE_SUCCESS } from "../Constants/SubjectActions"
 export const setSubjects = (subject) => {
     return {
         type: SET_SUBJECT,
@@ -41,3 +41,26 @@ export const studentDetails=(details)=>{
         payload:details
     }
 }
+export const setClassTypeTeacher=(classes)=>{
+   
+    return{
+        type:SET_CLASS_TYPE_SUCCESS,
+        payload:classes
+    }
+}
+export const setTeacherCourses=(courses)=>{
+  
+    return{
+        type:SET_COURSES_TYPE_SUCCESS,
+        payload:courses
+    }
+}
+
+export const setToken=(tokenNumber)=>{
+      return{
+          type:SET_TOKEN_TYPE_SUCCESS,
+          payload:tokenNumber
+      }
+      localStorage.setItem("userToken",JSON.stringify(tokenNumber))
+}
+

@@ -4,15 +4,16 @@ import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-import { Grid } from '@mui/material'
+import { Grid,Button } from '@mui/material'
 
 function DateSelection() {
     const [value, setValue] = React.useState(new Date());
+    
     return (
         <div>
 
             <Grid item>
-                Book A Demo
+            
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <StaticDatePicker
                         orientation="landscape"
@@ -24,6 +25,7 @@ function DateSelection() {
                         }}
                         renderInput={(params) => <TextField {...params} />}
                     />
+              
                 </LocalizationProvider>
             </Grid>
         </div>

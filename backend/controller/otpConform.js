@@ -18,19 +18,19 @@ const otpConformTeacher = (async (req, res, next) => {
 
 console.log(otp,number,password,email)
 
-  const client = twilio(accountSid, authToken, {
-    lazyLoading: true
-  });
-   console.log(client)
+  // const client = twilio(accountSid, authToken, {
+  //   lazyLoading: true
+  // });
+  //  console.log(client)
 
 
-   client.verify.services(ServiceID).verificationChecks.create({
-     to: `+91${number}`,
-     code: otp
-   }).then(async (data) => {
-    if (data.status == 'approved') {
-       console.log(data)
-      console.log("success")
+  //  client.verify.services(ServiceID).verificationChecks.create({
+  //    to: `+91${number}`,
+  //    code: otp
+  //  }).then(async (data) => {
+  //   if (data.status == 'approved') {
+  //      console.log(data)
+  //     console.log("success")
 
 
        password = await bcrypt.hash(password, 10)
@@ -40,7 +40,7 @@ console.log(otp,number,password,email)
 
 
          res.json({
-        teacher_alredy_exist: true
+        message:"teacher alredy registerd"
          })
        }
        else {
@@ -49,25 +49,25 @@ console.log(otp,number,password,email)
          console.log("successfully inserted", teacher)
          res.json({
           name: teacher.name,
-           ID: teacher._id,
-           teacher:true,
-           token: generateToken(teacher)
+           user_id: teacher._id,
+           teacherStatus: true,
+           token: generateToken(teacher._id)
         })
 
       }
 
-     }
-     else {
-       console.log("invalid otp")
-       res.json({
-         invalid_otp: true
-       })
-     }
+    //  }
+    //  else {
+    //    console.log("invalid otp")
+    //    res.json({
+    //      invalid_otp: true
+    //    })
+    //  }
 
-   }).catch((err) => {
-     console.log(err)
-   })
-})
+//    }).catch((err) => {
+//      console.log(err)
+//   //  })
+ })
 
 const otpConformStudent = (async (req, res) => {
 
@@ -108,10 +108,11 @@ const otpConformStudent = (async (req, res) => {
     console.log("successfully inserted", student)
     res.json({
       name: student.name,
-      ID: student._id,
-      student:true,
+      user_id: student._id,
+     
 
-      token: generateToken(student)
+      studentStatus: true,
+      token: generateToken(student._id)
     })
 
   }

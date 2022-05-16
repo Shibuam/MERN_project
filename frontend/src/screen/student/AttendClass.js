@@ -24,7 +24,7 @@ function AttendClass() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const paperStyle = { padding: 20, height: '30vh', width: 400, margin: ' auto' }
+    const paperStyle = { padding: 20, height: 'auto', width: 400, margin: ' auto' }
   
     const onSubmit=()=>{
         if(attendClass){
