@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { Grid, item, Card } from "@mui/material"
+import { Grid,Button, Card } from "@mui/material"
 import products from '../products/products';
 
 
 
 function Home() {
+  const navigate=useNavigate()
   return (
     <div>
       <Grid container>
@@ -23,15 +25,16 @@ function Home() {
           products.map((obj) => {
             return (
 
-              <Grid item xs={12} sm={6} md={4} lg={3} spacing={'3'} display={'flex'} textAlign={'center'} >
+              <Grid item xs={12} sm={6} md={3} lg={3} spacing={'3'} display={'flex'} textAlign={'center'} margin={'30px'} >
 
             
 
                   <Card sx={{ maxWidth: 345 }}>
-                    <img src={obj.image} />
-                    <h3>{obj.name}</h3>
-                  </Card>
-
+                    
+                  <Button onClick={()=>navigate('/login')}>  <img src={obj.image} /><br/> </Button>
+                 
+                  
+                     </Card>
           
 
 

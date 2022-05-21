@@ -22,7 +22,7 @@ function Login() {
     const navigate = useNavigate()
     const [mailError, setMailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
- //    const { genaratedToken } = useSelector((state) => { return state.genaratedToken })
+
 
 
 
@@ -39,9 +39,9 @@ function Login() {
     
          dispatch(setToken(data.token))
 
-   //     console.log(genaratedToken,"userToken")
+        console.log(data)
         
-   //      localStorage.setItem("userToken",genaratedToken)
+  
 
 
         if (data.teacherStatus) {
@@ -55,17 +55,9 @@ function Login() {
             localStorage.setItem('user', JSON.stringify(data))
             navigate('/studentdashboard')
         }
-        else if (data.invalid_password) {
-
-            setMailError('Invalid Password')
-        }
-        else if (data.invalid_email) {
-
-            setPasswordError('Invalid email')
-        }
-
+       
+          data.message && setMailError(data.message)
     }
-
 
 
 

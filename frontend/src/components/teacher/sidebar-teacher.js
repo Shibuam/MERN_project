@@ -16,7 +16,7 @@ const navigate=useNavigate()
             <Button onClick={()=>navigate('/teacherHomePage')}>    <HomeIcon/> Dashboard</Button><br/>
             <Button><ManIcon/>Student</Button><br/>
             <Button><ClassIcon/>My classes</Button><br/>
-            <Button><CalendarMonthIcon/>Calendar</Button><br/>
+            <Button onClick={()=>navigate('/calendar')}><CalendarMonthIcon/>Calendar</Button><br/>
             <Button onClick={()=>navigate('/teacherProfile')}><AccountCircleIcon/>Profile</Button><br/>
             <Button><HelpIcon/>Helps</Button><br/>
             </Paper>

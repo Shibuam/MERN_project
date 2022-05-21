@@ -1,4 +1,4 @@
-import { SET_LOCATION_REQUEST, SET_LOCATION_SUCCESS, SET_LOCATION_ERR, SET_SUBJECT, SET_ATTEND_CLASS_SUCCESS,SET_COURSE_TYPE_SUCCESS,SET_TRAINING_TYPE_SUCCESS,SET_STUDENT_DETAILS_SUCCESS,SET_CLASS_TYPE_SUCCESS,SET_COURSES_TYPE_SUCCESS,SET_TOKEN_TYPE_SUCCESS,SET_TOKEN_TYPE_REQUEST,SET_TOKEN_TYPE_FAIL,USER_LOGOUT } from "../Constants/SubjectActions";
+import { SET_LOCATION_REQUEST, SET_LOCATION_SUCCESS, SET_LOCATION_ERR, SET_SUBJECT, SET_ATTEND_CLASS_SUCCESS,SET_COURSE_TYPE_SUCCESS,SET_TRAINING_TYPE_SUCCESS,SET_STUDENT_DETAILS_SUCCESS,SET_CLASS_TYPE_SUCCESS,SET_COURSES_TYPE_SUCCESS,SET_TOKEN_TYPE_SUCCESS,SET_TOKEN_TYPE_REQUEST,SET_TOKEN_TYPE_FAIL,USER_LOGOUT,SET_DATE_SUCCESS } from "../Constants/SubjectActions";
 
 export const setSubjectReducer = (state = null, { type, payload }) => {
     switch (type) {
@@ -166,4 +166,24 @@ export const useTokenReducer = (state = {}, action) => {
         return state
     }
   }
+
+  export const setBookedDate = (state = {setDate:{}}, action) => {
+ 
+    try {
+        switch (action.type) {
+            case SET_DATE_SUCCESS:
+                return {
+                  
+                    ...state,setDate: action.payload,
+                 
+                }
+            default:
+                return state
+        }
+    }
+    catch (err) {
+        console.log(err, "errrrr");
+
+    }
+}
 

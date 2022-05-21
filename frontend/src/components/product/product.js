@@ -1,26 +1,26 @@
-import { Card, Typography, CardMedia, CardContent, CardActions, Button, Grid } from "@mui/material"
+// import { Card, Typography, CardMedia, CardContent, CardActions, Button, Grid } from "@mui/material"
 
-function product({ product }) {
+// function product({ product }) {
 
-    return (
-   <Grid container>
-                <Card item  >
-                    <CardMedia
-                        component="img"
-                        height="140"
-                        image={product.image}
-                        alt="green iguana"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {product.name}
-                        </Typography>
+//     return (
+//    <Grid container>
+//                 <Card item  >
+//                     <CardMedia
+//                         component="img"
+//                         height="140"
+//                         image={product.image}
+//                         alt="green iguana"
+//                     />
+//                     <CardContent>
+//                         <Typography gutterBottom variant="h5" component="div">
+//                             {product.name}
+//                         </Typography>
 
-                    </CardContent>
+//                     </CardContent>
 
-                </Card>
+//                 </Card>
               
-                </Grid>  
-    )
-}
-export default product
+//                 </Grid>  
+//     )
+// }
+// export default product

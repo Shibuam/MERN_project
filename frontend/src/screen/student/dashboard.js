@@ -6,11 +6,12 @@ import { Grid, Paper, Typography } from '@mui/material'
 
 import Teacher from '../../components/student/teacherDetails'
 import Sidebar from '../../components/student/sidebar'
-import Video from  '../../components/student/teacherVideo'
+import Video from '../../components/student/teacherVideo'
 function Dashboard() {
 
   let user = JSON.parse(localStorage.getItem('user'))
   const [teacher, setTeacher] = useState('')
+
 
   useEffect(() => {
     let getTeacher = async () => {
@@ -23,36 +24,43 @@ function Dashboard() {
       let url = '/api/student/getTeacher'
       let { data } = await axios.get(url, config)
 
-      await setTeacher(data)
+      setTeacher(data)
     }
     getTeacher()
   }, [])
 
-
   return (
-    <Grid container spacing={2} >
-
-
-      <Grid item xs={12}>
+    <div >
+      <Grid xs={12} md={2}>
         Select a tutor to book a free demo class
       </Grid>
 
-      <Grid item xs={12} md={2}>
-        <Paper style={{ minHeight: "500px" }}>
-          <Sidebar />
-        </Paper>
-      </Grid>
-      <Grid item xs={12} md={4} lg={6}>
-        <Teacher teacherProfileDetails={teacher} />
-
-      </Grid>
-      <Grid item xs={12} md={4} lg={6} alignContent={'center'} display={'flext'} justifyContent={'center'} >
-<Video teacherVideo={teacher}/>
-<Typography>Demonstration Video </Typography>
-        <DateSelection />
-      </Grid>
-
-    </Grid>
+      <div className='dashboardWrapper'>
+        <Grid item md={2} > <Sidebar /></Grid>
+        <Grid container>
+          <Grid item md={3} >
+            {teacher && <Teacher teacherProfileDetails={teacher} />}
+          </Grid>
+          <Grid item md={4} >
+            <Video teacherVideo={teacher} />
+            <Typography>Demo Video </Typography>
+          </Grid>
+          <Grid item md={3} >
+            <DateSelection />
+          </Grid>
+          <Grid item md={3} >
+            {teacher && <Teacher teacherProfileDetails={teacher} />}
+          </Grid>
+          <Grid item md={4} >
+            <Video teacherVideo={teacher} />
+            <Typography>Demo Video </Typography>
+          </Grid>
+          <Grid item md={3} >
+            <DateSelection />
+          </Grid>
+        </Grid>
+      </div>
+    </div>
   )
 }
 export default Dashboard

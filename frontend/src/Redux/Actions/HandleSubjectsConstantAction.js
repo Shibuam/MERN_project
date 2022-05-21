@@ -1,4 +1,4 @@
-import { SET_SUBJECT, SET_LOCATION_SUCCESS,SET_ATTEND_CLASS_SUCCESS,SET_COURSE_TYPE_SUCCESS,SET_TRAINING_TYPE_SUCCESS,SET_STUDENT_DETAILS_SUCCESS,SET_CLASS_TYPE_SUCCESS,SET_COURSES_TYPE_SUCCESS,SET_TOKEN_TYPE_SUCCESS } from "../Constants/SubjectActions"
+import { SET_SUBJECT, SET_LOCATION_SUCCESS,SET_ATTEND_CLASS_SUCCESS,SET_COURSE_TYPE_SUCCESS,SET_TRAINING_TYPE_SUCCESS,SET_STUDENT_DETAILS_SUCCESS,SET_CLASS_TYPE_SUCCESS,SET_COURSES_TYPE_SUCCESS,SET_TOKEN_TYPE_SUCCESS,SET_DATE_SUCCESS } from "../Constants/SubjectActions"
 export const setSubjects = (subject) => {
     return {
         type: SET_SUBJECT,
@@ -62,5 +62,12 @@ export const setToken=(tokenNumber)=>{
           payload:tokenNumber
       }
       localStorage.setItem("userToken",JSON.stringify(tokenNumber))
+}
+export const setDate=(bookedDate)=>{
+    return{
+        type:SET_DATE_SUCCESS,
+        payload:bookedDate
+    }
+
 }
 

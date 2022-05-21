@@ -84,7 +84,6 @@ export function Profile() {
 
                 </Grid>
                 <Grid item xs={12} md={5} margin={'20px'}>
-                    {/* <iframe width="auto" height="auto" src="https://www.youtube.com/embed/S8APEE6Qb1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                     {userDetails.teacherDetails && <iframe width="auto" height="auto" src={userDetails.teacherDetails.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
                     <br />Demo video
                     <Button onClick={() => setUploadLink(true)}>Upload/change Video</Button><br />

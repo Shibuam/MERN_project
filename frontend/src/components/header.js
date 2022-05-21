@@ -124,8 +124,8 @@ const Header = () => {
                
              <p style={{color:'white'}}> 
                {user?
-             
-               user.name
+            
+          <Typography>{user.name} | {user.studentStatus?'Student':'Teacher'}</Typography> 
             
                :
                  <>
@@ -155,8 +155,14 @@ const Header = () => {
               <MenuItem onClick={handleCloseUserMenu}>
                 <Box>
                   <br />
-                  {user ? <Button sx={{ color: 'black' }} onClick={logOut}>Log out</Button>
-                        :null
+                  {user &&
+                  <>
+    {user.studentStatus &&  <Button sx={{ color: 'black' }} onClick={()=>navigate('/studentdashboard')}>Home Page</Button>}
+    {user.teacherStatus &&  <Button sx={{ color: 'black' }} onClick={()=>navigate('/teacherProfile')}>Profile Page</Button>}
+    <br/>
+                  <Button sx={{ color: 'black' }} onClick={logOut}>Log out</Button>
+                  </>
+                        
                   
 
                   }

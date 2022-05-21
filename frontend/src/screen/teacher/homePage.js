@@ -4,19 +4,26 @@ import { Grid } from '@mui/material'
 import {SidebarTeacher} from '../../components/teacher/sidebar-teacher'
 import {Topbar} from '../../components/teacher/sidebar-teacher'
 
-// const drawerWidth = 240;
 function TeacherDashboard() {
+
+  let user = JSON.parse(localStorage.getItem('user'))
   const [imagecloud, setimagecloud] = useState([])
   const [getFunction] = useState()
 
   useEffect(() => {
-    const getImages = async () => {
-      const { data } = await axios.get('/api/teacher/TeacherProfileImage')
-      setimagecloud(data)
-    }
+    const teacherInfo = async () => {
+        const config = {
+            headers: {
+                authorization: `Bearer ${user.token}`
+            }
+        }
 
-    getImages()
-  }, [])
+        let { data } = await axios.get(`/api/teacher/teacherDetails`, config)
+        setimagecloud(data.teacherDetails.image)
+        setUserDetails(data)
+    }
+    teacherInfo()
+}, [])
   return (
     <div>
       {/* {

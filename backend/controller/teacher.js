@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 import generateToken from '../util/generateToken.js' // import jwt from 'jsonwebtoken'
 import { cloudinaryConfig } from '../util/cloudinary.js'
 import { v2 as cloudinary } from 'cloudinary'
-import teacher from '../Model/teacherModel.js'
+import student from '../Model/studentModel.js'
 
 export const teacherRegisterHandler = asyncHandler(async (req, res) => {
   let { name, email, contactNumber, subject, pincode, password } = req.body
@@ -44,7 +44,7 @@ export const teacherProfile = (async (req, res) => {
 
     const teacher = await teacherModel.findById(req.user._id)
 
-    const {secure_url} = await cloudinary.uploader.upload(imageAddress, { folder: 'ProfileImage' })
+    const { secure_url } = await cloudinary.uploader.upload(imageAddress, { folder: 'ProfileImage' })
     console.log("secure_url", secure_url)
     teacher.image = secure_url;
     await teacher.save()
@@ -56,7 +56,7 @@ export const teacherProfile = (async (req, res) => {
   }
 })
 
-export const getTeacherProfileImage = (async (req, res) => {
+export const getTeacherProfileImage = asyncHandler(async (req, res) => {
   const { resources } = await cloudinary.search.expression('folder: ProfileImage')
     .sort_by('public_id', 'desc')
     .max_results(30)
@@ -66,19 +66,29 @@ export const getTeacherProfileImage = (async (req, res) => {
 })
 
 
-export const  teacherInformation=((req,res)=>{
+export const teacherInformation = ((req, res) => {
 
- let teacherDetails=req.user
+  let teacherDetails = req.user
   res.json({
     teacherDetails
   })
-  
+
 })
-export const updateVideo=(async(req,res)=>{
-  console.log("reached at updateVideo",req.user)
-const teacher=await teacherModel.findById(req.user._id)
-teacher.video=req.body.videoLink
-await teacher.save()
-  console.log(teacher.videoLink,"VideoLink")
+export const updateVideo = (async (req, res) => {
+
+  const teacher = await teacherModel.findById(req.user._id)
+  teacher.video = req.body.videoLink
+  await teacher.save()
+
   res.json(teacher)
+})
+
+export const studentDetails = asyncHandler(async (req, res) => {
+  console.log("student Details")
+
+   console.log("reached at student details", req.params.student)
+   let studentDetails = await student.findById(req.params.student)
+ console.log(studentDetails)
+   res.json({studentDetails})
+
 })

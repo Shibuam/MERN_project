@@ -21,8 +21,7 @@ function CourseTeacher() {
  const navigate=useNavigate()
  const dispatch=useDispatch()
 
-//     const [course, setCourse] = useState()
-// console.log(course)
+
  
 
 

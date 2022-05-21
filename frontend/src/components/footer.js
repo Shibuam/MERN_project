@@ -1,12 +1,23 @@
-import {Grid,Box} from '@mui/material'
-function Footer(){
-    return(
+import { Grid, Box } from '@mui/material'
+function Footer() {
+    return (
         <div >
-            <Grid container style={{backgroundColor:'rgb(219,234,253)',minHeight:'100' }}>
-            <Box sx={{ height: '25%' }}>
+            <Grid container style={{ backgroundColor: 'rgb(219,234,253)', minHeight: '100' }}>
+               
+                    <Grid item md={3}>
+                        About us
+                    </Grid>
+                    <Grid item md={3}>
+                        Careers
+                    </Grid>
+                    <Grid item md={3}>
+                        Terms and conditions
+                    </Grid>
+                    <Grid item md={3}>
+                        contact Us
+                    </Grid>
 
-            Footer
-            </Box>
+            
             </Grid>
         </div>
     )

@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { setLocationReducer, setSubjectReducer,setAttendClassType,setCourseType,setTrainingType,setStudentDetails,setClassTypeTeacher,useTokenReducer } from "./SubjectReducer";
+import { setLocationReducer, setSubjectReducer,setAttendClassType,setCourseType,setTrainingType,setStudentDetails,setClassTypeTeacher,useTokenReducer,setBookedDate } from "./SubjectReducer";
 
 export const reducer = combineReducers({
     subject: setSubjectReducer,
@@ -9,6 +9,7 @@ export const reducer = combineReducers({
     trainingType:setTrainingType,
     studentDetails:setStudentDetails,
     classTypeTeacher:setClassTypeTeacher,
-    genaratedToken:useTokenReducer
+    genaratedToken:useTokenReducer,
+    bookedDate:setBookedDate
 
 })
