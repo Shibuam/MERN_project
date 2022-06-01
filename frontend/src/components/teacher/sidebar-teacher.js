@@ -19,6 +19,7 @@ const navigate=useNavigate()
             <Button onClick={()=>navigate('/calendar')}><CalendarMonthIcon/>Calendar</Button><br/>
             <Button onClick={()=>navigate('/teacherProfile')}><AccountCircleIcon/>Profile</Button><br/>
             <Button><HelpIcon/>Helps</Button><br/>
+            <Button onClick={()=>navigate('/payment')}>Make Payment</Button>
             </Paper>
         </div>
     )
@@ -31,6 +32,7 @@ export function Topbar(){
             <Button>New</Button>|
             <Button>Contact</Button>|
             <Button>Demo</Button>
+           
         </div>
     )
 }

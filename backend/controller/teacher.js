@@ -37,7 +37,7 @@ export const teacherRegisterHandler = asyncHandler(async (req, res) => {
   }
 
 })
-export const teacherProfile = (async (req, res) => {
+export const teacherProfile =asyncHandler (async (req, res) => {
   try {
 
     let { imageAddress } = req.body
@@ -74,7 +74,7 @@ export const teacherInformation = ((req, res) => {
   })
 
 })
-export const updateVideo = (async (req, res) => {
+export const updateVideo = asyncHandler(async (req, res) => {
 
   const teacher = await teacherModel.findById(req.user._id)
   teacher.video = req.body.videoLink

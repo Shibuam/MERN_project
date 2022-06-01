@@ -62,7 +62,7 @@ export function Profile() {
                     <SidebarTeacher />
                 </Grid>
 
-                <Grid item xs={12} md={3} margin={'20px'}>
+                <Grid item xs={12} md={3} margin={'10px'}>
 
 
                     {imagecloud ?
@@ -73,7 +73,10 @@ export function Profile() {
 
 
                     <br />  <Button onClick={() => navigate('/profilePicture')}>Change/Add image</Button><br />
-                    <Typography style={{ color: 'red' }}>Basic Informations </Typography>
+                   
+                </Grid>
+                <Grid item xs={12} md={3} margin={'10px'}>
+                <Typography style={{ color: 'red' }}>Basic Informations </Typography>
                     {userDetails ?
                         <>
                             <Typography>Name:{userDetails.teacherDetails.name}</Typography>
@@ -83,7 +86,7 @@ export function Profile() {
                             <Typography>Subject:{userDetails.teacherDetails.subject}</Typography> </> : null}
 
                 </Grid>
-                <Grid item xs={12} md={5} margin={'20px'}>
+                <Grid item xs={12} md={3} margin={'10px'}>
                     {userDetails.teacherDetails && <iframe width="auto" height="auto" src={userDetails.teacherDetails.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
                     <br />Demo video
                     <Button onClick={() => setUploadLink(true)}>Upload/change Video</Button><br />

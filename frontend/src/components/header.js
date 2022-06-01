@@ -142,8 +142,9 @@ function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-      
-          <Typography>TeacherSpot</Typography>
+         <Button style={{color:'white'}}  onClick={()=>navigate('/')}>TeacherSpot</Button>
+    
+     
           <Typography
             variant="h6"
             noWrap

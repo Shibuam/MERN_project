@@ -34,16 +34,16 @@ const products=[
 
 },
 
-{
-    name:"Drawing class",
-    image:'drawing.jpeg',
+// {
+//     name:"Drawing class",
+//     image:'drawing.jpeg',
 
-},
-{   
-     name:"Guitar Tuition",
-    image:'guitar.jpeg',
+// },
+// {   
+//      name:"Guitar Tuition",
+//     image:'guitar.jpeg',
 
-},
+// },
 
 
 

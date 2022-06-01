@@ -22,6 +22,8 @@ import Experience from "./screen/teacher/experience";
 import ProfilePicture from './screen/teacher/ProfilePicture'
 import { Profile } from './screen/teacher/profile'
 import Calendar from './screen/teacher/calendar'
+import {Payment} from './screen/teacher/payment'
+
 
 function App() {
   return (
@@ -50,6 +52,7 @@ function App() {
 
           <Route path='/teacherProfile' element={<Profile />} />
           <Route path='/Calendar' element={<Calendar />} />
+          <Route path='/payment' element={<Payment/>}/>
 
           <Route path='*' element={<Register />} />
         </Routes>

@@ -7,6 +7,7 @@ function Sidebar(){
             <Button>Find by Subject</Button><br/>
             <Button>Find by Location</Button><br/>
             <Button >My teachers</Button><br/>
+           
         </div>
     )
 }

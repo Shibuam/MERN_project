@@ -1,5 +1,6 @@
+import asyncHandler from 'express-async-handler'
 import Teacher from '../Model/teacherModel.js'
-export const getTeacher = (async (req, res) => {
+export const getTeacher =asyncHandler (async (req, res) => {
     const course = req.user.courseType;
     let teacherDetails = await Teacher.find({ subject: course })
     res.json({
@@ -7,7 +8,7 @@ export const getTeacher = (async (req, res) => {
     })
 })
 
-export const booking_date = (async (req, res) => {
+export const booking_date =asyncHandler (async (req, res) => {
 
     let { dateBooked, teacher_id } = req.body
     let teacher = await Teacher.findById(teacher_id)
@@ -26,7 +27,7 @@ export const booking_date = (async (req, res) => {
 
 })
 
-export const bookTeacher = (async (req, res) => {
+export const bookTeacher =asyncHandler (async (req, res) => {
     let teacher = await Teacher.findById(req.body.teacher_id)
 
     const studentExists = teacher.students.filter((student => student.student_id.toString() === req.user._id.toString()))
