@@ -1,8 +1,9 @@
-import asyncHandler from 'express-async-handler'
 import bcrypt from 'bcrypt'
+import asyncHandler from 'express-async-handler'
+
 import genarateToken from '../../backend/util/generateToken.js'
-import teacherModel from '../Model/teacherModel.js'
 import studentModel from '../Model/studentModel.js'
+import teacherModel from '../Model/teacherModel.js'
 
 const loginHandler = asyncHandler(async (req, res, next) => {
 
@@ -25,9 +26,8 @@ const loginHandler = asyncHandler(async (req, res, next) => {
 
         }
         else {
-            res.json({
-                message: "Invalid Password from teacher"
-            })
+            throw new Error("Invalid Password ")
+
         }
     }
     else if (student) {
@@ -42,9 +42,9 @@ const loginHandler = asyncHandler(async (req, res, next) => {
 
         }
         else {
-            res.json({
-                message: "invalid Password from student"
-            })
+
+            throw new Error("Invalid Password")
+
         }
 
     }
@@ -52,9 +52,8 @@ const loginHandler = asyncHandler(async (req, res, next) => {
 
 
     else {
-        res.json({
-            message: "Invalid email"
-        })
+        throw new Error("Invalid email id")
+
     }
 })
 

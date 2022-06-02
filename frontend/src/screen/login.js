@@ -19,9 +19,10 @@ const styles = {
 
 function Login() {
     const dispatch = useDispatch()
+    const [data, setData] = useState(false)
+    const [err, setErr] = useState()
     const navigate = useNavigate()
-    const [mailError, setMailError] = useState('')
-    const [passwordError, setPasswordError] = useState('')
+    
 
 
 
@@ -35,13 +36,18 @@ function Login() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const FormSubmit = async () => {
-        const { data } = await axios.post('/api/login', login)
-    
-         dispatch(setToken(data.token))
+        try {
+            const { data } = await axios.post('/api/login', login)
+            setData(data)
+            dispatch(setToken(data.token))
 
-        console.log(data)
-        
-  
+            console.log(data)
+
+        } catch (error) {
+            setErr(error.response.data.message)
+            console.log((error.response.data.message));
+        }
+
 
 
         if (data.teacherStatus) {
@@ -55,8 +61,8 @@ function Login() {
             localStorage.setItem('user', JSON.stringify(data))
             navigate('/studentdashboard')
         }
-       
-          data.message && setMailError(data.message)
+
+
     }
 
 
@@ -75,8 +81,8 @@ function Login() {
                         <Grid><center>
 
                             <h2> Sign In</h2>
-                            <p style={{ color: 'red' }}>   {mailError}</p>
-                            <p style={{ color: 'red' }}>   {passwordError}</p>
+                            <p style={{ color: 'red' }}>   {err}</p>
+
                         </center>
                         </Grid>
 

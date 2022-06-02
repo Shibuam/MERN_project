@@ -1,12 +1,13 @@
+import cors from 'cors';
 import express from "express";
-import createError from 'http-errors'
-import mongoConnect from './config/connect.js'
-import cors from 'cors'
+import createError from 'http-errors';
+import path from 'path';
+import mongoConnect from './config/connect.js';
+import { errorHandler } from './middlewares/errorMiddleware.js';
+import login from './routes/common.js';
+import student from './routes/studentRoute.js';
+import teacher from './routes/teacherRoute.js';
 
-import student from './routes/studentRoute.js'
-import teacher from './routes/teacherRoute.js'
-import login from './routes/common.js'
-import path from 'path'
 
 let portnumber = process.env.PORT
 //create a new express application
@@ -55,10 +56,8 @@ app.use(function (req, res, next) {
   // throw new Error('routeError')
 });
 
-app.use((err, req, res, next) => {
-  
-  console.log(err)
-  res.send("invalid page")
-})
+app.use(errorHandler)
+
+
 
 app.listen(portnumber, console.log("server running on port number:", portnumber))
