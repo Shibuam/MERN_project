@@ -1,35 +1,35 @@
-import Header from "./components/header";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
-import Register from './screen/Register'
-import Home from "./screen/homePage";
-import TutorRegister from './screen/teacher/TutorSignUpForm'
-import Login from './screen/login'
-import OtpVerification from "./components/otpVerification";
-import TeacherHomePage from "./screen/teacher/homePage";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from "./components/footer";
-import StudentSubject from "./screen/student/studentSubject";
-import Location from "./screen/student/location";
-import Attend from './screen/student/AttendClass'
+import Header from "./components/header";
+import OtpVerification from "./components/otpVerification";
+import Home from "./screen/homePage";
+import Login from './screen/login';
+import Register from './screen/Register';
+import Attend from './screen/student/AttendClass';
 import Course from "./screen/student/course";
+import Dashboard from './screen/student/dashboard';
+import Location from "./screen/student/location";
 import StartTraining from "./screen/student/StartTraining";
-import StudentReg from './screen/student/studentReg'
-import Dashboard from './screen/student/dashboard'
+import StudentReg from './screen/student/studentReg';
+import StudentSubject from "./screen/student/studentSubject";
+import Calendar from './screen/teacher/calendar';
 import ClassType from "./screen/teacher/classTypeAndFees";
-import TeacherCourse from './screen/teacher/courseTeacher'
-import OnetimeFee from './screen/teacher/oneTimeFee'
+import TeacherCourse from './screen/teacher/courseTeacher';
 import Experience from "./screen/teacher/experience";
-import ProfilePicture from './screen/teacher/ProfilePicture'
-import { Profile } from './screen/teacher/profile'
-import Calendar from './screen/teacher/calendar'
-import {Payment} from './screen/teacher/payment'
+import TeacherHomePage from "./screen/teacher/homePage";
+import OnetimeFee from './screen/teacher/oneTimeFee';
+import { Payment } from './screen/teacher/payment';
+import { Profile } from './screen/teacher/profile';
+import ProfilePicture from './screen/teacher/ProfilePicture';
+import TutorRegister from './screen/teacher/TutorSignUpForm';
+
 
 
 function App() {
   return (
     <Router>
       <Header />
-      <main style={{minHeight: '90vh'}}>
+      <main style={{ minHeight: '90vh' }}>
         <Routes>
           <Route path='/' element={<Home />} exact />
           <Route path="/register" element={<Register />} />
@@ -52,7 +52,7 @@ function App() {
 
           <Route path='/teacherProfile' element={<Profile />} />
           <Route path='/Calendar' element={<Calendar />} />
-          <Route path='/payment' element={<Payment/>}/>
+          <Route path='/payment' element={<Payment />} />
 
           <Route path='*' element={<Register />} />
         </Routes>

@@ -1,0 +1,21 @@
+.explore{
+    size: x-large;
+    display: flex;
+    justify-content: center;
+}
+.banner{
+display: flex;
+justify-content: center;
+width: 100%;
+height:400px;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    min-width: 345px;
+    max-width: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    margin: 4%;
+
+}

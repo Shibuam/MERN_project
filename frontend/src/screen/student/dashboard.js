@@ -36,8 +36,8 @@ function Dashboard() {
       </Grid>
 
       <div className='dashboardWrapper'>
-        <Grid item md={2} > <Sidebar /></Grid>
         <Grid container>
+        <Grid item md={2} > <Sidebar /></Grid>
           <Grid item md={3} >
             {teacher && <Teacher teacherProfileDetails={teacher} />}
           </Grid>
