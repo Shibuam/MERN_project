@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Grid, Button, Typography, Paper, TextField } from '@mui/material'
 import { SidebarTeacher } from '../../components/teacher/sidebar-teacher'
-import { textAlign } from '@mui/system'
-export function Profile() {
 
+const ProfileCom = () => {
     const navigate = useNavigate()
     const [previewSource, setPreviewSource] = useState(null)
     const [fileInputState, setFileInputState] = useState(null);
@@ -107,3 +106,4 @@ export function Profile() {
     )
 }
 
+export default ProfileCom

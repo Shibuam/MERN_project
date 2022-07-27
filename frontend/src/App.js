@@ -4,7 +4,8 @@ import Header from "./components/header";
 import OtpVerification from "./components/otpVerification";
 import Home from "./screen/homePage";
 import Login from './screen/login';
-import Register from './screen/Register';
+
+import RegisterScreen from './screen/RegisterScreen';
 import Attend from './screen/student/AttendClass';
 import Course from "./screen/student/course";
 import Dashboard from './screen/student/dashboard';
@@ -29,10 +30,10 @@ function App() {
   return (
     <Router>
       <Header />
-      <main style={{ minHeight: '90vh' }}>
+      <main style={{ minHeight: '80vh' }}>
         <Routes>
           <Route path='/' element={<Home />} exact />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<RegisterScreen />} />
           <Route path='/tutorSignUpForm' element={<TutorRegister />} />
           <Route path='/login' element={<Login />} />
           <Route path='/otpverification' element={<OtpVerification />} />
@@ -54,7 +55,7 @@ function App() {
           <Route path='/Calendar' element={<Calendar />} />
           <Route path='/payment' element={<Payment />} />
 
-          <Route path='*' element={<Register />} />
+          <Route path='*' element={<RegisterScreen />} />
         </Routes>
       </main>
       <Footer />
