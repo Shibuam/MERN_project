@@ -4,6 +4,7 @@ import student from '../Model/studentModel.js'
 import teacher from '../Model/teacherModel.js'
 
 export const protect = asyncHandler(async (req, res, next) => {
+   
     let token
     if (req.headers.authorization &&
         req.headers.authorization.startsWith('Bearer')) {

@@ -1,11 +1,34 @@
 import asyncHandler from 'express-async-handler'
 import Teacher from '../Model/teacherModel.js'
+import Student from '../Model/studentModel.js'
 export const getTeacher =asyncHandler (async (req, res) => {
-    const course = req.user.courseType;
-    let teacherDetails = await Teacher.find({ subject: course })
-    res.json({
-        teacherDetails
+     const course = req.user.courseType;
+    
+     let longitude=req.user.loc.coordinates[0]
+     let altitude=req.user.loc.coordinates[1]
+     
+   
+  try{
+
+ 
+    const teacherDetails=await Teacher.find({ subject: course,
+
+        loc:
+       { $near:
+          {
+            $geometry: { type: "Point",  coordinates: [  longitude,altitude] },
+            $minDistance: 0,
+            $maxDistance: 5000*25
+          }
+       }
     })
+    
+        console.log(teacherDetails,"teacher")
+        res.json({teacherDetails})
+  }
+  catch(err){
+    console.log(err)
+  }
 })
 
 export const booking_date =asyncHandler (async (req, res) => {
@@ -47,5 +70,22 @@ export const bookTeacher =asyncHandler (async (req, res) => {
         message: "Successfully Booked"
     })
 
+
+})
+export const Location=(async(req,res)=>{
+
+try{
+
+    let student=await Student.findById(req.user._id)
+  
+    student.loc.coordinates=req.body.coordinates
+    student.save()
+    res.json(200)
+}
+catch(err){
+    console.log(err)
+}
+    
+    
 
 })

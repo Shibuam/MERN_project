@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux'
 import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
@@ -18,6 +18,7 @@ const styles = {
 
 function Location() {
 
+    const [coordinates,setCoordinates]=useState([])
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const location = useSelector((state) => { return state.location })
@@ -27,14 +28,26 @@ function Location() {
 
     //console.log(location,"useSelectoruseSelectoruseSelectoruseSelectoruseSelectoruseSelector");
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const paperStyle = { padding: 20, height: '30vh', width: 360, margin: ' auto' }
+    const paperStyle = { padding: 20, width: 360, margin: ' auto' }
 
-    const Submit = (data) => {
+    const Submit = () => {
         
-        console.log(data)
-        dispatch(setLocation(data['exampleRequired']))
+        console.log()
+        dispatch(setLocation(coordinates))
         navigate('/attendClass')
     }
+
+
+    const getLocation=async()=>{
+alert("reached")
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+            setCoordinates([...coordinates,position.coords.longitude,position.coords.latitude])
+          
+          });
+
+        }
     return (
         <div style={styles.paperContainer} >
             <Grid container  >
@@ -44,16 +57,18 @@ function Location() {
                     <Grid item xs={12} spacing={'2'} align="center">
                         <Typography style={{ backgroundColor: '54D69E' }}>What is your location?</Typography>
                     </Grid>
-                    <form onSubmit={handleSubmit(Submit)}>
+                    <Grid sx={{ marginTop: "10px" }} item xs={12} align="center">
+                            <Button onClick={()=>getLocation()} variant="contained" >View your Location</Button>
+                        </Grid>
                         <Grid item xs={12} spacing={2} align="center" >
-                            <TextField label="eg:Kannur" {...register("exampleRequired", { required: true })} ></TextField><br />
-                            {errors.exampleRequired && <span>This field is required</span>}
+                            <TextField label="co ordinates" value={coordinates} ></TextField><br />
+                          
                         </Grid>
+                      
+                        <Button onClick={()=>Submit()} variant="contained" >Submit  Location</Button>
 
-                        <Grid sx={{ marginTop: "10px" }} item xs={12} align="center">
-                            <Button type='submit' variant="contained" >Next</Button>
-                        </Grid>
-                    </form>
+                      
+          
                 </Paper >
 
 

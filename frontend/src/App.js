@@ -9,6 +9,7 @@ import RegisterScreen from './screen/RegisterScreen';
 import Attend from './screen/student/AttendClass';
 import Course from "./screen/student/course";
 import Dashboard from './screen/student/dashboard';
+import StudentLocation from './screen/student/StudentLocation';
 import Location from "./screen/student/location";
 import StartTraining from "./screen/student/StartTraining";
 import StudentReg from './screen/student/studentReg';
@@ -39,6 +40,7 @@ function App() {
           <Route path='/otpverification' element={<OtpVerification />} />
           <Route path='/studentSubject' element={<StudentSubject />} />
           <Route path='/location' element={<Location />} />
+          <Route path='/studentlocation' element={<StudentLocation/>}/>
           <Route path="/attendClass" element={<Attend />} />
           <Route path="/course" element={<Course />} />
           <Route path="/startTraining" element={<StartTraining />} />

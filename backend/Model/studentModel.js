@@ -28,16 +28,18 @@ classType:{
     required:true,
     type:String
 },
-location:{
-    required:true,
-    type:String
-},
+
 subject:{
     required:true,
     type:String
-}
+},
+loc: {
+    type: { type: String, default: "Point" },
+    coordinates: [Number],
+  },
 
 })
+studentSchema.index({ loc: "2dsphere" });
 const student=mongoose.model('student',studentSchema);
 
 export default student

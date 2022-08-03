@@ -48,16 +48,7 @@ function Dashboard() {
           <Grid item md={3} >
             <DateSelection />
           </Grid>
-          <Grid item md={3} >
-            {teacher && <Teacher teacherProfileDetails={teacher} />}
-          </Grid>
-          <Grid item md={4} >
-            <Video teacherVideo={teacher} />
-            <Typography>Demo Video </Typography>
-          </Grid>
-          <Grid item md={3} >
-            <DateSelection />
-          </Grid>
+         
         </Grid>
       </div>
     </div>

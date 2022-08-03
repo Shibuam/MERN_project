@@ -7,11 +7,14 @@ export const setSubjects = (subject) => {
 } 
 
 export const setLocation = (location)=>{
+    console.log(location)
     return{
         type:SET_LOCATION_SUCCESS,
-        payload:location
+        payload:location,
+      
       
     }
+   
 
 }
 
