@@ -20,7 +20,7 @@ import TeacherCourse from './screen/teacher/courseTeacher';
 import Experience from "./screen/teacher/experience";
 import TeacherHomePage from "./screen/teacher/homePage";
 import OnetimeFee from './screen/teacher/oneTimeFee';
-import { Payment } from './screen/teacher/payment';
+import { Payment } from './screen/teacher/Payment';
 import { Profile } from './screen/teacher/profile';
 import ProfilePicture from './screen/teacher/ProfilePicture';
 import TutorRegister from './screen/teacher/TutorSignUpForm';
